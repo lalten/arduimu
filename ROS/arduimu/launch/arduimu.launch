@@ -1,0 +1,10 @@
+<launch>
+
+  <!-- arduimu via serial -->
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_arduimu_tf" args="0 0 0 0 0 0 base_link arduimu 20" />
+  <node pkg="arduimu" type="imu_serial" name="arduimu_serial" respawn="true" output="screen">
+    <param name="port" value="/dev/serial/by-id/usb-Intel_GENUINO_101_AE6771SQ60900BE-if00" />
+    <remap from="arduimu_serial/imu" to="imu" />
+  </node>
+
+</launch>
